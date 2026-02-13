@@ -1,0 +1,121 @@
+/* 1. Overall Page Setup */
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffebee; /* Light Pink background */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow: hidden; /* Prevents scrollbars when hearts fly or button runs */
+}
+
+/* 2. The Main Card */
+.card {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 25px;
+    box-shadow: 0 15px 35px rgba(211, 47, 47, 0.2);
+    text-align: center;
+    z-index: 10;
+    width: 90%;
+    max-width: 420px;
+    transition: all 0.5s ease;
+}
+
+.title { 
+    color: #d32f2f; 
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+/* 3. Button Layout (Side-by-Side) */
+.buttons {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px; /* Creates the space between Yes and No */
+    position: relative;
+    min-height: 60px;
+}
+
+button {
+    padding: 12px 30px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.3s;
+}
+
+#yesBtn {
+    background-color: #ff4081;
+    color: white;
+    box-shadow: 0 4px 15px rgba(255, 64, 129, 0.4);
+}
+
+#yesBtn:hover {
+    transform: scale(1.1); /* Makes Yes button pop slightly */
+}
+
+#noBtn {
+    background-color: #cfd8dc; /* Subtle grey */
+    color: #546e7a;
+    position: relative; /* Starts in the flow, JS will change it to 'fixed' */
+    z-index: 999;
+    transition: left 0.1s ease, top 0.1s ease; /* Smooth movement */
+}
+
+/* 4. Post-Yes Message Styling */
+#typewriter {
+    color: #d32f2f;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    text-align: left;
+    max-height: 250px; /* Keeps long messages from breaking the card */
+    overflow-y: auto;  /* Adds scroll if message is very long */
+    padding: 10px;
+    background: #fff5f5;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+/* Custom Scrollbar for the message */
+#typewriter::-webkit-scrollbar {
+    width: 5px;
+}
+#typewriter::-webkit-scrollbar-thumb {
+    background: #ff4081;
+    border-radius: 10px;
+}
+
+/* 5. Heart Rain Animation (Celebration) */
+.heart-drop {
+    position: fixed;
+    top: -10vh;
+    user-select: none;
+    z-index: 1000;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh) rotate(360deg);
+    }
+}
+
+/* 6. Background Floating Hearts (Initial Screen) */
+.heart {
+    position: absolute;
+    color: #ffcdd2;
+    font-size: 20px;
+    animation: float 5s linear infinite;
+    top: 100vh;
+    z-index: 1;
+}
+
+@keyframes float {
+    to { transform: translateY(-110vh) rotate(360deg); }
+}
